@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+	<a href="/post/newpost">Write a blog</a>
+	{% for post in posts %}
+		<a href="/post/{{post.key.id()}}">
+			<h3>{{post.title}}</h3>
+			<hr>
+			<p>{{post.content}}</p>
+		</a>
+		<span><div>{{post.like_count}} {% if post.like_count < 2 %} Like {% else %} Likes {% endif %} </div><a href="/post/like/{{post.key.id()}}">Like</a></span>
+	{% endfor %}
+{% endblock %}
+

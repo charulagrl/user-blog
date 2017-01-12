@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+	<div class="error">{{error_permission}}</div>
+	<h2>{{post.title}}</h2>
+	<hr>
+	<p>{{post.content}}</p>
+	<span><div>{{post.like_count}} {% if post.like_count < 2 %} Like {% else %} Likes {% endif %} </div><a href="/post/like/{{post.key.id()}}">Like</a></span>
+	<a href="/post/edit/{{post.key.id()}}">Edit</a>
+	<a href="/post/delete/{{post.key.id()}}">Delete</a>
+
+	<h3>Comments</h3>
+
+	{% for comment in comments %}
+		<p>{{comment.content}}</p>
+	{% endfor %}
+	<a href="/post/comment/{{post.key.id()}}">Comment</a>
+{% endblock %}
